@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Upscape (free demo)</title>
+<meta name="description" content="Free demo of Upscape, a fast arcade tower climber: the first 2,000 floors, playable in your browser.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0a0e22">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root {
+    --night: #0a0e22;
+    --night-2: #151b3d;
+    --moss: #b6e37a;
+    --ink: #eef6ff;
+    --ember: #ffb547;
+    --display: "Germania One", "Arial Black", Impact, sans-serif;
+    --body: "Barlow Semi Condensed", "Arial Narrow", "Trebuchet MS", sans-serif;
+    --s: 1;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: radial-gradient(ellipse at 50% 30%, var(--night-2), var(--night) 70%);
+    background-color: var(--night);
+    color: var(--ink);
+    font-family: var(--body);
+    overflow: hidden;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  #screen { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; }
+  canvas {
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px rgba(182, 227, 122, 0.12), 0 20px 60px rgba(0, 0, 0, 0.55);
+    outline: none;
+  }
+  body.is-touch canvas { border-radius: 0; box-shadow: none; }
+  #nameBox {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: calc(10px * var(--s));
+  }
+  #nameBox[hidden] { display: none; }
+  #nameBox input, #nameBox button {
+    font: calc(26px * var(--s)) var(--display);
+    color: var(--ink);
+    border-radius: calc(10px * var(--s));
+    padding: calc(8px * var(--s)) calc(14px * var(--s));
+  }
+  #nameBox input {
+    width: calc(200px * var(--s));
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: rgba(10, 14, 34, 0.9);
+    border: 2px solid var(--moss);
+    outline: none;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  #nameBox input:focus { border-color: var(--ember); box-shadow: 0 0 0 3px rgba(255, 181, 71, 0.3); }
+  #nameBox button { background: var(--ember); color: var(--night); border: 0; cursor: pointer; }
+  #nameBox button:focus-visible { outline: 3px solid var(--ink); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="screen">
+    <canvas id="game" tabindex="0" aria-label="Upscape game. Arrow keys to run, Space to jump."></canvas>
+    <form id="nameBox" hidden autocomplete="off">
+      <input id="nameInput" maxlength="10" spellcheck="false" aria-label="Your name for the high score board">
+      <button type="submit">SAVE</button>
+    </form>
+  </div>
+</div>
+<script>window.UPSCAPE_DEMO = true;</script>
+<script src="js/core.js"></script>
+<script src="js/lang-fr.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/songs.js"></script>
+<script src="js/climbers.js"></script>
+<script src="js/game.js"></script>
+<script src="js/modes.js"></script>
+<script src="js/chase.js"></script>
+<script src="js/scenes.js"></script>
+<script src="js/zones.js"></script>
+<script src="js/tributes.js"></script>
+<script src="js/nods.js"></script>
+<script src="js/online.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
